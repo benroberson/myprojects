@@ -11,7 +11,7 @@ Right-click top of cmd window > Properties > Layout > Window Size
 				       ... > Font > Size
 Press ^C to exit a run.
 */
-const int KDIMEN=66; //66 or 24   //height
+const int KDIMEN=66;  //66 or 24   //height
 const int IDIMEN=196; //40 or 80 or 196	  //width
 #include <iostream>
 #include <cstdlib>
@@ -55,8 +55,6 @@ int main(int argc, char** argv)
 		if(edit=='n')
 			return 0;
 	}
-	//cout<<"Long Pause interval? ";
-	//cin>>pauseinterval;
 	*/
 	
 	//CMD ARGUMENTS
@@ -79,8 +77,6 @@ int main(int argc, char** argv)
 	
 	switch(start) {
 	case 2012: {
-		//cout<<"Filename? ";
-		//cin>>name;
 		ifstream fin;
 		fin.open(name.c_str());
 		if(fin.fail()) {
@@ -98,8 +94,6 @@ int main(int argc, char** argv)
 				if(inp=='X'||inp=='O'||inp=='1')
 					data[k][i]=1;
 			}
-			//if(inp!=' '&&inp!='\n'&&inp!='/')
-			//getline(fin,trash);
 		}
 	}
 	break;
@@ -121,12 +115,12 @@ int main(int argc, char** argv)
 		for(int k=0; k<KDIMEN; k++) {
 			for(int i=0; i<IDIMEN; i++) {
 				if(data[k][i])
-					out+='X'; //cout<<'X';
+					out+='X';
 				else
-					out+=' '; //cout<<' ';
+					out+=' ';
 			}
 			if(IDIMEN<80)
-				out+='\n'; //cout<<endl;
+				out+='\n';
 		}
 		cout<<out;
 		gotoxy(0,1 + (start==1));
@@ -155,8 +149,7 @@ int main(int argc, char** argv)
 			if(ticks/pauseinterval==1.*ticks/pauseinterval)
 				Sleep(2500);
 		}
-
-		//for(int i=0; i<IDIMEN; i++) cout<<'-';
+	
 	}
 	return 0;
 }//end of main
