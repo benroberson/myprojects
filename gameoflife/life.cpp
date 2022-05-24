@@ -3,12 +3,12 @@
 
 //compile: g++ -o life life.cpp
 //CMD ARGUMENTS: life.exe [frame length(ms)] [random seed]
-//			or   life.exe [frame length(ms)] -f [filename]
-//			or   life.exe [frame length(ms)] [random seed] [pause after x frames]
+//	    or   life.exe [frame length(ms)] -f [filename]
+//	    or   life.exe [frame length(ms)] [random seed] [pause after x frames]
 /*
 Before starting, set console to 196x68, font size 10
 Right-click top of cmd window > Properties > Layout > Window Size
-									   ... > Font > Size
+				       ... > Font > Size
 Press ^C to exit a run.
 */
 const int KDIMEN=66; //66 or 24   //height
@@ -20,9 +20,11 @@ const int IDIMEN=196; //40 or 80 or 196	  //width
 #include <windows.h>
 using namespace std;
 
-int countAlive(int i, int k, const bool (&data)[KDIMEN][IDIMEN]); //counts the live neighbors
-bool liveOrDie(int count, bool alive); //returns a bool for whether the cell lives or not
-bool fileEdit();
+//counts the live neighbors
+int countAlive(int i, int k, const bool (&data)[KDIMEN][IDIMEN]);
+//returns a bool for whether the cell lives or not
+bool liveOrDie(int count, bool alive);
+/*bool fileEdit();*/
 void gotoxy(int x, int y)
 {
 	COORD coord;
@@ -161,8 +163,8 @@ int main(int argc, char** argv)
 
 int countAlive(int i, int k, const bool (&data)[KDIMEN][IDIMEN])
 {
-//RULES FOR "GAME OF LIFE"
-
+//different sets of cells must be counted
+//if the coordinate is on a corner or edge
 	int count;
 
 	if(i==0) {
@@ -198,7 +200,8 @@ int countAlive(int i, int k, const bool (&data)[KDIMEN][IDIMEN])
 		}
 	}
 
-	if(i!=0 && i!=IDIMEN-1 && k!=0 && k!=KDIMEN-1) {//main case for if not on corner or edge
+	if(i!=0 && i!=IDIMEN-1 && k!=0 && k!=KDIMEN-1) {
+		//main case for if not on corner or edge
 		count=data[k-1][i-1]+data[k-1][i]+data[k-1][i+1]+data[k][i-1]+data[k][i+1]+data[k+1][i-1]+data[k+1][i]+data[k+1][i+1];
 
 	}
@@ -208,6 +211,7 @@ int countAlive(int i, int k, const bool (&data)[KDIMEN][IDIMEN])
 
 bool liveOrDie(int count, bool alive)
 {
+//RULES FOR "GAME OF LIFE"
 	if(alive) {
 		if(count<2 || count>3) {
 			return 0;
