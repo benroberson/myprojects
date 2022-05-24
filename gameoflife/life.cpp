@@ -4,7 +4,7 @@
 //compile: g++ -o life life.cpp
 //CMD ARGUMENTS: life.exe [frame length(ms)] [random seed]
 //	    or   life.exe [frame length(ms)] -f [filename]
-//	    or   life.exe [frame length(ms)] [random seed] [pause after x frames]
+//	    or   life.exe [frame length(ms)] [     ^     ] [pause after x frames]
 /*
 Before starting, set console to 196x68, font size 10
 Right-click top of cmd window > Properties > Layout > Window Size
@@ -24,7 +24,6 @@ using namespace std;
 int countAlive(int i, int k, const bool (&data)[KDIMEN][IDIMEN]);
 //returns a bool for whether the cell lives or not
 bool liveOrDie(int count, bool alive);
-/*bool fileEdit();*/
 void gotoxy(int x, int y)
 {
 	COORD coord;
